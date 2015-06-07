@@ -1,0 +1,15 @@
+language: java
+script: gradle dist
+install:
+- echo sonatypeUsername=none >> gradle.properties
+- echo sonatypePassword=none >> gradle.properties
+
+deploy:
+  provider: releases
+  api_key:
+  file:
+    - build/distributions/xmlcalabash1-pegdown-$TRAVIS_TAG.zip
+  on:
+    tags: true
+    all_branches: true
+
